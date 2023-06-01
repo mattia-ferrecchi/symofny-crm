@@ -25,9 +25,6 @@ class Operator
     #[ORM\Column(type: Types::BINARY)]
     private $gender = null;
 
-    #[ORM\Column]
-    private ?bool $is_main = null;
-
     #[ORM\OneToMany(mappedBy: 'supervisor', targetEntity: Site::class)]
     private Collection $site;
 
