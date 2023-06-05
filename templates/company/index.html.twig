@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Company table{% endblock %}
+
+{% block bread %}Company index{% endblock %}
+
+{% block body %}
+    <div class="flex flex-col">
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
+                    <table class="min-w-full text-left text-sm font-light">
+                    <thead
+                    class="border-b bg-neutral-200 font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                    <tr>
+                        <th scope="col" class="px-6 py-4">Id</th>
+                        <th scope="col" class="px-6 py-4">Legal_name</th>
+                        <th scope="col" class="px-6 py-4">Vat_number</th>
+                        <th scope="col" class="px-6 py-4">actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for company in companies %}
+                        <tr
+                        class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
+                            <td class="whitespace-nowrap px-6 py-4">{{ company.id }}</td>
+                            <td class="whitespace-nowrap px-6 py-4">{{ company.legalName }}</td>
+                            <td class="whitespace-nowrap px-6 py-4">{{ company.vatNumber }}</td>
+                            <td>
+                                <a href="{{ path('app_company_show', {'id': company.id}) }}">show</a>
+                                <a href="{{ path('app_company_edit', {'id': company.id}) }}">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a class="text-blue-500" href="{{ path('app_company_new') }}">Create new</a>
+{% endblock %}

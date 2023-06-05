@@ -21,13 +21,13 @@ class Company
     #[ORM\Column(length: 255)]
     private ?string $vat_number = null;
 
-    #[ORM\OneToMany(mappedBy: 'company', targetEntity: site::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'company', targetEntity: Site::class, orphanRemoval: true)]
     private Collection $sites;
 
     #[ORM\OneToMany(mappedBy: 'company', targetEntity: Contact::class)]
     private Collection $contact;
 
-    #[ORM\OneToMany(mappedBy: 'company', targetEntity: address::class)]
+    #[ORM\OneToMany(mappedBy: 'company', targetEntity: Address::class)]
     private Collection $address;
 
     public function __construct()

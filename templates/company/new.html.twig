@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Company{% endblock %}
+{% block bread %}Create new Company{% endblock %}
+
+{% block body %}
+
+    {{ include('company/_form.html.twig') }}
+
+    <a class="text-blue-500" href="{{ path('app_company_index') }}">back to list</a>
+{% endblock %}

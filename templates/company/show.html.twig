@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ company.legalName }}{% endblock %}
+
+{% block bread %}{{ company.legalName }}{% endblock %}
+
+{% block body %}
+    <div class="border-t border-gray-200 px-4 py-5 sm:p-0 dark:border-neutral-500 dark:bg-neutral-600">
+        <dl class="sm:divide-y sm:divide-gray-200">
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500 dark:text-white">
+                    Id
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-white">
+                    {{ company.id }}
+                </dd>
+            </div>
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 ">
+                <dt class="text-sm font-medium text-gray-500 dark:text-white">
+                    Legal Name
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-white">
+                    {{ company.legalName }}
+                </dd>
+            </div>
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 ">
+                <dt class="text-sm font-medium text-gray-500 dark:text-white">
+                    Vat Number
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-white">
+                    {{ company.vatNumber}}
+                </dd>
+            </div>
+            
+        </dl>
+    </div>
+    <a class="text-blue-500" href="{{ path('app_company_index') }}">Back</a>
+    <br>
+    <a class="text-blue-500" href="{{ path('app_company_edit', {'id': company.id}) }}">Edit</a>
+
+    {{ include('company/_delete_form.html.twig') }}
+{% endblock %}
