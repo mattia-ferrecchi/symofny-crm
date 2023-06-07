@@ -27,7 +27,7 @@
                             <td class="whitespace-nowrap px-6 py-4">{{ company.legalName }}</td>
                             <td class="whitespace-nowrap px-6 py-4">{{ company.vatNumber }}</td>
                             <td>
-                                <a href="{{ path('app_company_show', {'id': company.id}) }}">show</a>
+                                <a class="whitespace-nowrap px-6 py-4" href="{{ path('app_company_show', {'id': company.id}) }}">show</a>
                                 <a href="{{ path('app_company_edit', {'id': company.id}) }}">edit</a>
                             </td>
                         </tr>

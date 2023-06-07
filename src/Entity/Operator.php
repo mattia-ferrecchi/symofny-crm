@@ -22,16 +22,16 @@ class Operator
     #[ORM\Column(length: 255)]
     private ?string $last_name = null;
 
-    #[ORM\Column(type: Types::BINARY)]
-    private $gender = null;
+    #[ORM\Column(length: 255)]
+    private ?string $gender = null;
 
     #[ORM\OneToMany(mappedBy: 'supervisor', targetEntity: Site::class)]
     private Collection $site;
 
-    #[ORM\OneToMany(mappedBy: 'supervisor', targetEntity: plant::class)]
+    #[ORM\OneToMany(mappedBy: 'supervisor', targetEntity: Plant::class)]
     private Collection $plant;
 
-    #[ORM\OneToMany(mappedBy: 'operator', targetEntity: contact::class)]
+    #[ORM\OneToMany(mappedBy: 'operator', targetEntity: Contact::class)]
     private Collection $contact;
 
     public function __construct()
@@ -70,12 +70,12 @@ class Operator
         return $this;
     }
 
-    public function getGender()
+    public function getGender(): ?string
     {
         return $this->gender;
     }
 
-    public function setGender($gender): self
+    public function setGender(string $gender): self
     {
         $this->gender = $gender;
 

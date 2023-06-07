@@ -1,0 +1,55 @@
+{{ form_start(form, {attr:{'novalidate': 'novalidate'}}) }}
+    <div>{{ form_errors(form)}}</div>
+
+    <div>
+        {{ form_label(form.road, 'Enter the road', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        {{ form_widget(form.road, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+        {{ form_errors(form.road)}}
+    </div>
+
+    <div>
+        {{ form_label(form.house_number, 'Enter the house number', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        {{ form_widget(form.house_number, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+        {{ form_errors(form.house_number)}}
+    </div>
+
+    <div>
+        {{ form_label(form.city, 'Enter the city', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        {{ form_widget(form.city, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+        {{ form_errors(form.city)}}
+    </div>
+
+    <div>
+        {{ form_label(form.postal_code, 'Enter the postal code', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        {{ form_widget(form.postal_code, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+        {{ form_errors(form.postal_code)}}
+    </div>
+
+    <div>
+        {{ form_label(form.country, 'Enter the country', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        {{ form_widget(form.country, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+        {{ form_errors(form.country)}}
+    </div>
+
+    <div>
+        {{ form_label(form.company, 'Enter the company', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        {{ form_widget(form.company, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+        {{ form_errors(form.company)}}
+    </div>
+
+    <div>
+        {{ form_label(form.site, 'Enter the site', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        {{ form_widget(form.site, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+        {{ form_errors(form.site)}}
+    </div>
+
+    <div class="flex items-center mt-4 mb-4">
+        {{ form_label(form.is_legal, 'Is Legal', {'label_attr': {'class': 'text-sm text-gray-700 dark:text-gray-300 font-medium mr-2'}}) }}
+        {{ form_widget(form.is_legal, {'attr': {'class': 'h-4 w-4 rounded border-gray border text-indigo-300 '}}) }}
+    </div>
+
+
+
+
+    <button type="submit" class="w-full shadow-sm border-transparent bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:bg-indigo-400 text-white rounded-md border p2 mb-2 mt-4">Save</button>
+{{ form_end(form)}}

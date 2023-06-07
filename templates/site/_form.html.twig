@@ -1,0 +1,32 @@
+{{ form_start(form, {attr:{'novalidate': 'novalidate'}}) }}
+    <div>{{ form_errors(form)}}</div>
+
+    <div>
+        {{ form_label(form.legal_name, 'Enter the legal name', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        {{ form_widget(form.legal_name, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+        {{ form_errors(form.legal_name)}}
+    </div>
+
+    <div>
+        {{ form_label(form.company, 'Enter the company', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        {{ form_widget(form.company, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+        {{ form_errors(form.company)}}
+    </div>
+
+    <div>
+        {{ form_label(form.address, 'Enter the address', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        {{ form_widget(form.address, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+        {{ form_errors(form.address)}}
+    </div>
+
+    <div>
+        {{ form_label(form.supervisor, 'Enter the supervisor', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        {{ form_widget(form.supervisor, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+        {{ form_errors(form.supervisor)}}
+    </div>
+
+
+
+
+    <button type="submit" class="w-full shadow-sm border-transparent bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:bg-indigo-400 text-white rounded-md border p2 mb-2 mt-4">Save</button>
+{{ form_end(form)}}

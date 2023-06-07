@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\SiteRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Address;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\SiteRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: SiteRepository::class)]
 class Site
@@ -79,12 +80,12 @@ class Site
         return $this;
     }
 
-    public function getAddress(): ?address
+    public function getAddress(): ?Address
     {
         return $this->address;
     }
 
-    public function setAddress(address $address): self
+    public function setAddress(Address $address): self
     {
         $this->address = $address;
 
