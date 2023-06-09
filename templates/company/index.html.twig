@@ -16,6 +16,7 @@
                         <th scope="col" class="px-6 py-4">Id</th>
                         <th scope="col" class="px-6 py-4">Legal_name</th>
                         <th scope="col" class="px-6 py-4">Vat_number</th>
+                        <th scope="col" class="px-6 py-4">Addresses</th>
                         <th scope="col" class="px-6 py-4">actions</th>
                     </tr>
                     </thead>
@@ -26,6 +27,15 @@
                             <td class="whitespace-nowrap px-6 py-4">{{ company.id }}</td>
                             <td class="whitespace-nowrap px-6 py-4">{{ company.legalName }}</td>
                             <td class="whitespace-nowrap px-6 py-4">{{ company.vatNumber }}</td>
+                            <td class="whitespace-nowrap px-6 py-4">
+                                <ul>
+                                    {% for address in company.address %}
+                                        <li>
+                                            {{ address.road }}, {{ address.houseNumber }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
                             <td>
                                 <a class="whitespace-nowrap px-6 py-4" href="{{ path('app_company_show', {'id': company.id}) }}">show</a>
                                 <a href="{{ path('app_company_edit', {'id': company.id}) }}">edit</a>

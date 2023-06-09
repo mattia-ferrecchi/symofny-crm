@@ -27,7 +27,7 @@ class Company
     #[ORM\OneToMany(mappedBy: 'company', targetEntity: Contact::class)]
     private Collection $contact;
 
-    #[ORM\OneToMany(mappedBy: 'company', targetEntity: Address::class)]
+    #[ORM\OneToMany(mappedBy: 'company', targetEntity: Address::class, cascade: ['persist', 'remove'])]
     private Collection $address;
 
     public function __construct()

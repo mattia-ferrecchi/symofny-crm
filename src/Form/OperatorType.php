@@ -21,8 +21,7 @@ class OperatorType extends AbstractType
                     'Female' => 'F',
                     'Null' => 'N'
                 ],
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

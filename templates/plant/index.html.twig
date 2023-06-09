@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Site table{% endblock %}
+{% block title %}Plant table{% endblock %}
 
-{% block bread %}Site index{% endblock %}
+{% block bread %}Plant index{% endblock %}
 
 {% block body %}
     <div class="flex flex-col">
@@ -14,32 +14,26 @@
                     class="border-b bg-neutral-200 font-medium dark:border-neutral-500 dark:bg-neutral-600">
                     <tr>
                         <th scope="col" class="px-6 py-4">Id</th>
-                        <th scope="col" class="px-6 py-4">Legal_name</th>
-                        <th scope="col" class="px-6 py-4">Address</th>
+                        <th scope="col" class="px-6 py-4">Plant name</th>
+                        <th scope="col" class="px-6 py-4">Type</th>
                         <th scope="col" class="px-6 py-4">actions</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for site in sites %}
+                    {% for plant in plants %}
                         <tr
                         class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
-                            <td class="whitespace-nowrap px-6 py-4">{{ site.id }}</td>
-                            <td class="whitespace-nowrap px-6 py-4">{{ site.legalName }}</td>
-                            <td class="whitespace-nowrap px-6 py-4">
-                                <ul>
-                                    <li>
-                                        {{ site.address.road }}, {{ site.address.houseNumber }}
-                                    </li>
-                                </ul>
-                            </td>                                 
+                            <td class="whitespace-nowrap px-6 py-4">{{ plant.id }}</td>
+                            <td class="whitespace-nowrap px-6 py-4">{{ plant.plantName }}</td>
+                            <td class="whitespace-nowrap px-6 py-4">{{ plant.Type }}</td>
                             <td>
-                                <a href="{{ path('app_site_show', {'id': site.id}) }}">show</a>
-                                <a href="{{ path('app_site_edit', {'id': site.id}) }}">edit</a>
+                                <a class="whitespace-nowrap px-6 py-4" href="{{ path('app_plant_show', {'id': plant.id}) }}">show</a>
+                                <a href="{{ path('app_plant_edit', {'id': plant.id}) }}">edit</a>
                             </td>
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="3">no records found</td>
+                            <td colspan="4">no records found</td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -49,5 +43,5 @@
         </div>
     </div>
 
-    <a class="text-blue-500" href="{{ path('app_site_new') }}">Create new</a>
+    <a class="text-blue-500" href="{{ path('app_plant_new') }}">Create new</a>
 {% endblock %}

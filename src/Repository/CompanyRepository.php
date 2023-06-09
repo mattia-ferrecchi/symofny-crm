@@ -23,6 +23,10 @@ class CompanyRepository extends ServiceEntityRepository
 
     public function save(Company $entity, bool $flush = false): void
     {
+        $addresses=$entity->getAddress();
+        foreach ($addresses as $address){
+            $address->setCompany($entity);
+        }
         $this->getEntityManager()->persist($entity);
 
         if ($flush) {

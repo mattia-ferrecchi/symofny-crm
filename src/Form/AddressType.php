@@ -9,6 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class AddressType extends AbstractType
 {
@@ -16,17 +17,20 @@ class AddressType extends AbstractType
     {
         $builder
             ->add('road')
+            // ('road', TextType::class, [
+            //     'attr'=>[
+            //         'class'=>'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'
+            //     ],
+            //     'label_attr'=>[
+            //         'class'=>'block text-sm text-grey-700 dark:text-white font-medium'
+            //     ],
+
+            // ])
             ->add('house_number')
             ->add('city')
             ->add('postal_code')
             ->add('country')
             ->add('is_legal')
-            ->add('company', EntityType::class, [
-                'class'=>Company::class,
-                'choice_label'=>'legal_name',
-                'empty_data' => null
-            ])
-            ->add('site')
         ;
     }
 

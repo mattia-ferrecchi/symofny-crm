@@ -3,23 +3,36 @@
 namespace App\Form;
 
 use App\Entity\Site;
-use App\Entity\Company;
+use App\Entity\Plant;
 use App\Entity\Operator;
-use App\Form\AddressType;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\CallbackTransformer;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class SiteType extends AbstractType
+class PlantType extends AbstractType
 {
+    
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('legal_name')
-            ->add('company', EntityType::class, [
-                'class'=>Company::class,
+            ->add('plant_name')
+            ->add('type', ChoiceType::class, [
+                'choices' => [
+                    'Production' => 'production',
+                    'Storage' => 'storage',
+                    'Control' => 'control', 
+                    'Logistic' => 'logistic',
+                    'Receipt' => 'receipt',
+                    'Virtual' => 'virtual'
+                ],
+            ])
+            ->add('site', EntityType::class, [
+                'class'=>Site::class,
                 'choice_label'=>'legal_name'
             ])
             ->add('supervisor', EntityType::class, [
@@ -28,13 +41,13 @@ class SiteType extends AbstractType
                     return $operator->getId() . ' ' . $operator->getName() . ' ' . $operator->getLastName();
                 }
             ])
-            ->add('address', AddressType::class, []);
+        ;
     }
-
+    
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Site::class,
+            'data_class' => Plant::class,
         ]);
     }
 }

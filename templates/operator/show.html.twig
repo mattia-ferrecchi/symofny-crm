@@ -1,34 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Operator{% endblock %}
+{% block title %}{{ operator.name }}{% endblock %}
+
+{% block bread %}{{ operator.id }}, {{ operator.name }} {{ operator.lastName }}{% endblock %}
 
 {% block body %}
-    <h1>Operator</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ operator.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ operator.name }}</td>
-            </tr>
-            <tr>
-                <th>Last_name</th>
-                <td>{{ operator.lastName }}</td>
-            </tr>
-            <tr>
-                <th>Gender</th>
-                <td>{{ operator.gender }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_operator_index') }}">back to list</a>
-
-    <a href="{{ path('app_operator_edit', {'id': operator.id}) }}">edit</a>
+    <div class="border-t border-gray-200 px-4 py-5 sm:p-0 dark:border-neutral-500 dark:bg-neutral-600">
+        <dl class="sm:divide-y sm:divide-gray-200">
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500 dark:text-white">
+                    Id
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-white">
+                    {{ operator.id }}
+                </dd>
+            </div>
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 ">
+                <dt class="text-sm font-medium text-gray-500 dark:text-white">
+                    Name
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-white">
+                    {{ operator.name }}
+                </dd>
+            </div>
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 ">
+                <dt class="text-sm font-medium text-gray-500 dark:text-white">
+                    Last name
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-white">
+                    {{ operator.lastName}}
+                </dd>
+            </div>
+            <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 ">
+                <dt class="text-sm font-medium text-gray-500 dark:text-white">
+                    Gender
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 dark:text-white">
+                    {{ operator.gender}}
+                </dd>
+            </div>
+            
+        </dl>
+    </div>
+    <a class="text-blue-500" href="{{ path('app_operator_index') }}">Back</a>
+    <br>
+    <a class="text-blue-500" href="{{ path('app_operator_edit', {'id': operator.id}) }}">Edit</a>
 
     {{ include('operator/_delete_form.html.twig') }}
 {% endblock %}

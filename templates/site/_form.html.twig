@@ -12,11 +12,42 @@
         {{ form_widget(form.company, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
         {{ form_errors(form.company)}}
     </div>
+    <h2>
+        {{ form_label(form.address, 'address', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+    </h2>
+    <div>
+        {{ form_label(form.address.road, 'Enter the road', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        {{ form_widget(form.address.road, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+        {{ form_errors(form.address.road)}}
+    </div>
 
     <div>
-        {{ form_label(form.address, 'Enter the address', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
-        {{ form_widget(form.address, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
-        {{ form_errors(form.address)}}
+        {{ form_label(form.address.house_number, 'Enter the house number', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        {{ form_widget(form.address.house_number, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+        {{ form_errors(form.address.house_number)}}
+    </div>
+
+    <div>
+        {{ form_label(form.address.city, 'Enter the city', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        {{ form_widget(form.address.city, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+        {{ form_errors(form.address.city)}}
+    </div>
+
+    <div>
+        {{ form_label(form.address.postal_code, 'Enter the postal code', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        {{ form_widget(form.address.postal_code, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+        {{ form_errors(form.address.postal_code)}}
+    </div>
+
+    <div>
+        {{ form_label(form.address.country, 'Enter the country', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        {{ form_widget(form.address.country, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+        {{ form_errors(form.address.country)}}
+    </div>
+
+    <div class="flex items-center mt-4 mb-4">
+        {{ form_label(form.address.is_legal, 'Is Legal', {'label_attr': {'class': 'text-sm text-gray-700 dark:text-gray-300 font-medium mr-2'}}) }}
+        {{ form_widget(form.address.is_legal, {'attr': {'class': 'h-4 w-4 rounded border-gray border text-indigo-300 '}}) }}
     </div>
 
     <div>

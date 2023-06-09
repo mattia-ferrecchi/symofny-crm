@@ -30,7 +30,6 @@ class SiteController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $siteRepository->save($site, true);
-
             return $this->redirectToRoute('app_site_index', [], Response::HTTP_SEE_OTHER);
         }
 

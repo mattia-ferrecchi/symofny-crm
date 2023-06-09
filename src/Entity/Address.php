@@ -31,7 +31,7 @@ class Address
     #[ORM\Column]
     private ?bool $is_legal = null;
 
-    #[ORM\ManyToOne(inversedBy: 'address')]
+    #[ORM\ManyToOne(inversedBy: 'address', cascade: ['persist', 'remove'])]
     private ?Company $company = null;
 
     #[ORM\OneToOne(mappedBy: 'address', cascade: ['persist', 'remove'])]
