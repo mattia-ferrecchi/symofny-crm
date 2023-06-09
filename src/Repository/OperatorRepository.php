@@ -23,6 +23,10 @@ class OperatorRepository extends ServiceEntityRepository
 
     public function save(Operator $entity, bool $flush = false): void
     {
+        $contacts=$entity->getContact();
+        foreach ($contacts as $contact){
+            $contact->setOperator($entity);
+        }
         $this->getEntityManager()->persist($entity);
 
         if ($flush) {

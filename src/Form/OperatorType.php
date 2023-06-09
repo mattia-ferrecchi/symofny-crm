@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class OperatorType extends AbstractType
 {
@@ -21,7 +22,13 @@ class OperatorType extends AbstractType
                     'Female' => 'F',
                     'Null' => 'N'
                 ],
-            ]);
+            ])
+            ->add('contact', CollectionType::class, [
+                'entry_type'=>ContactType::class,
+                'entry_options'=>[],
+                'allow_add'=>true
+            ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

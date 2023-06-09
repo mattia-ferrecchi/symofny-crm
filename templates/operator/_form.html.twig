@@ -18,6 +18,68 @@
         {{ form_widget(form.gender, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
         {{ form_errors(form.gender)}}
     </div>
+    <ul class="contact"
+        data-index="{{ form.contact|length > 0 ? form.contact|last.vars.name + 1 : 0 }}"
+        data-prototype="{{ form_widget(form.contact.vars.prototype)|e('html_attr') }}"
+    ></ul>
+    <button type="button" class="add_item_link" data-collection-holder-class="contact">Add a contact</button>
+    <script>
+        const addFormToCollection = (e) => {
+            const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);
+
+            const item = document.createElement('li');
+
+            item.innerHTML = collectionHolder
+                .dataset
+                .prototype
+                .replace(
+                /__name__/g,
+                collectionHolder.dataset.index
+                );
+
+            collectionHolder.appendChild(item);
+
+            collectionHolder.dataset.index++;
+        };
+        document
+            .querySelectorAll('.add_item_link')
+            .forEach(btn => {
+                btn.addEventListener("click", addFormToCollection)
+            });
+    </script>
+    {% for contact in form.contact %}
+        <h2>
+            {{ form_label(contact, 'contact', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        </h2>
+        <div>
+            {{ form_label(contact.email, 'Enter the email', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+            {{ form_widget(contact.email, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+            {{ form_errors(contact.email)}}
+        </div>
+
+        <div>
+            {{ form_label(contact.phone_number, 'Enter the phone number', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+            {{ form_widget(contact.phone_number, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+            {{ form_errors(contact.phone_number)}}
+        </div>
+
+        <div>
+            {{ form_label(contact.name, 'Enter your name', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+            {{ form_widget(contact.name, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+            {{ form_errors(contact.name)}}
+        </div>
+
+        <div>
+            {{ form_label(contact.last_name, 'Enter your last name', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+            {{ form_widget(contact.last_name, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+            {{ form_errors(contact.last_name)}}
+        </div>
+
+        <div class="flex items-center mt-4 mb-4">
+            {{ form_label(contact.is_main, 'Is main', {'label_attr': {'class': 'text-sm text-gray-700 dark:text-gray-300 font-medium mr-2'}}) }}
+            {{ form_widget(contact.is_main, {'attr': {'class': 'h-4 w-4 rounded border-gray border text-indigo-300 '}}) }}
+        </div>
+    {% endfor %}
 
 
 

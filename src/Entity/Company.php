@@ -24,7 +24,7 @@ class Company
     #[ORM\OneToMany(mappedBy: 'company', targetEntity: Site::class, orphanRemoval: true)]
     private Collection $sites;
 
-    #[ORM\OneToMany(mappedBy: 'company', targetEntity: Contact::class)]
+    #[ORM\OneToMany(mappedBy: 'company', targetEntity: Contact::class, cascade: ['persist', 'remove'])]
     private Collection $contact;
 
     #[ORM\OneToMany(mappedBy: 'company', targetEntity: Address::class, cascade: ['persist', 'remove'])]

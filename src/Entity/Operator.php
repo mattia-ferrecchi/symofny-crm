@@ -31,7 +31,7 @@ class Operator
     #[ORM\OneToMany(mappedBy: 'supervisor', targetEntity: Plant::class)]
     private Collection $plant;
 
-    #[ORM\OneToMany(mappedBy: 'operator', targetEntity: Contact::class)]
+    #[ORM\OneToMany(mappedBy: 'operator', targetEntity: Contact::class, cascade: ['persist', 'remove'])]
     private Collection $contact;
 
     public function __construct()
