@@ -27,6 +27,10 @@ class CompanyRepository extends ServiceEntityRepository
         foreach ($addresses as $address){
             $address->setCompany($entity);
         }
+        $contacts=$entity->getContact();
+        foreach ($contacts as $contact){
+            $contact->setCompany($entity);
+        }
         $this->getEntityManager()->persist($entity);
 
         if ($flush) {

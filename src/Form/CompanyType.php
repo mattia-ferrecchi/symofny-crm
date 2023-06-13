@@ -19,8 +19,15 @@ class CompanyType extends AbstractType
             ->add('address', CollectionType::class, [
                 'entry_type'=>addressType::class,
                 'entry_options'=>[],
-                'allow_add'=>true
-            ]);
+                'allow_add'=>true,
+                'label'=>false
+            ])
+            ->add('contact', CollectionType::class, [
+                'entry_type'=>ContactType::class,
+                'entry_options'=>[],
+                'allow_add'=>true,
+                'label'=>false
+            ])
         ;
     }
 

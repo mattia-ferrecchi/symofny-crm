@@ -26,7 +26,8 @@ class OperatorType extends AbstractType
             ->add('contact', CollectionType::class, [
                 'entry_type'=>ContactType::class,
                 'entry_options'=>[],
-                'allow_add'=>true
+                'allow_add'=>true,
+                'label'=>false
             ])
         ;
     }
