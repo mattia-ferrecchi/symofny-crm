@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PlantRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PlantRepository::class)]
@@ -26,6 +28,14 @@ class Plant
     #[ORM\ManyToOne(inversedBy: 'plant')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Operator $supervisor = null;
+
+    #[ORM\OneToMany(mappedBy: 'plant', targetEntity: Activity::class, orphanRemoval: true)]
+    private Collection $activity;
+
+    public function __construct()
+    {
+        $this->activity = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -76,6 +86,36 @@ class Plant
     public function setSupervisor(?Operator $supervisor): self
     {
         $this->supervisor = $supervisor;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Activity>
+     */
+    public function getActivity(): Collection
+    {
+        return $this->activity;
+    }
+
+    public function addActivity(Activity $activity): self
+    {
+        if (!$this->activity->contains($activity)) {
+            $this->activity->add($activity);
+            $activity->setPlant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActivity(Activity $activity): self
+    {
+        if ($this->activity->removeElement($activity)) {
+            // set the owning side to null (unless already changed)
+            if ($activity->getPlant() === $this) {
+                $activity->setPlant(null);
+            }
+        }
 
         return $this;
     }

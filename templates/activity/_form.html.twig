@@ -1,0 +1,32 @@
+{{ form_start(form) }}
+    <div>{{ form_errors(form)}}</div>
+
+    <div>
+        {{ form_label(form.start_date, 'Enter the Start Date', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        {{ form_widget(form.start_date, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+        {{ form_errors(form.start_date)}}
+    </div>
+
+    <div>
+        {{ form_label(form.end_date, 'Enter the End Date', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        {{ form_widget(form.end_date, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+        {{ form_errors(form.end_date)}}
+    </div>
+    
+
+    <div>
+        {{ form_label(form.operator, 'Choose the operator', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        {{ form_widget(form.operator, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+        {{ form_errors(form.operator)}}
+    </div>
+    
+    <div>
+        {{ form_label(form.plant, 'Choose the plant', {'label_attr':{'class':'block text-sm text-grey-700 dark:text-grey-300 font-medium'}})}}
+        {{ form_widget(form.plant, {'attr':{'class':'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'}})}}
+        {{ form_errors(form.plant)}}
+    </div>
+
+
+
+    <button type="submit" class="w-full shadow-sm border-transparent bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:bg-indigo-400 text-white rounded-md border p2 mb-2 mt-4">Save</button>
+{{ form_end(form)}}

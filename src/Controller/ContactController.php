@@ -34,7 +34,7 @@ class ContactController extends AbstractController
             return $this->redirectToRoute('app_contact_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('contact/new.html.twig', [
+        return $this->render('contact/new.html.twig', [
             'contact' => $contact,
             'form' => $form,
         ]);
@@ -60,7 +60,7 @@ class ContactController extends AbstractController
             return $this->redirectToRoute('app_contact_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('contact/edit.html.twig', [
+        return $this->render('contact/edit.html.twig', [
             'contact' => $contact,
             'form' => $form,
         ]);

@@ -22,7 +22,8 @@ class ContactType extends AbstractType
             ->add('email', EmailType::class, array(
                 'attr'=>['class'=>'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'],
                 'label'=>'Enter the contact email',
-                'label_attr'=>['class'=>'block text-sm text-grey-700 dark:text-grey-300 font-medium']
+                'label_attr'=>['class'=>'block text-sm text-grey-700 dark:text-grey-300 font-medium'],
+                'required'=>true
             ))
             ->add('phone_number', IntegerType::class, array(
                 'attr'=>['class'=>'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'],
@@ -32,12 +33,14 @@ class ContactType extends AbstractType
             ->add('name', TextType::class, array(
                 'attr'=>['class'=>'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'],
                 'label'=>'Enter the contact name',
-                'label_attr'=>['class'=>'block text-sm text-grey-700 dark:text-grey-300 font-medium']
+                'label_attr'=>['class'=>'block text-sm text-grey-700 dark:text-grey-300 font-medium'],
+                'required'=>true
             ))
             ->add('last_name', TextType::class, array(
                 'attr'=>['class'=>'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p2 mt-1 bm-2'],
                 'label'=>'Enter the contact last name',
-                'label_attr'=>['class'=>'block text-sm text-grey-700 dark:text-grey-300 font-medium']
+                'label_attr'=>['class'=>'block text-sm text-grey-700 dark:text-grey-300 font-medium'],
+                'required'=>true
             ))
             ->add('is_main', CheckboxType::class, array(
                 'attr'=>['class'=>'h-4 w-4 rounded border-gray border text-indigo-300'],

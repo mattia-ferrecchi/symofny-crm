@@ -1,4 +1,4 @@
-{{ form_start(form, {attr:{'novalidate': 'novalidate'}}) }}
+{{ form_start(form) }}
     <div>{{ form_errors(form)}}</div>
 
     <div>
@@ -41,6 +41,7 @@
 
             collectionHolder.dataset.index++;
         };
+
         document
             .querySelectorAll('.add_item_link')
             .forEach(btn => {

@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Activity table{% endblock %}
+
+{% block bread %}Activity index{% endblock %}
+
+{% block body %}
+    <div class="flex flex-col">
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
+                    <table class="min-w-full text-left text-sm font-light">
+                    <thead
+                    class="border-b bg-neutral-200 font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                    <tr>
+                        <th scope="col" class="px-6 py-4">Id</th>
+                        <th scope="col" class="px-6 py-4">Start Date</th>
+                        <th scope="col" class="px-6 py-4">End Date</th>
+                        <th scope="col" class="px-6 py-4">Operator Email</th>
+                        <th scope="col" class="px-6 py-4">Plant</th>
+                        <th scope="col" class="px-6 py-4">Site</th>
+                        <th scope="col" class="px-6 py-4">Company</th>
+                        <th scope="col" class="px-6 py-4">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for activity in activities %}
+                            <tr
+                            class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
+                                <td class="whitespace-nowrap px-6 py-4">{{ activity.id }}</td>
+                                <td class="whitespace-nowrap px-6 py-4">{{activity.startDate.format('d/m/Y')}}</td>
+                                <td class="whitespace-nowrap px-6 py-4">{{activity.endDate.format('d/m/Y')}}</td>
+                                <td class="whitespace-nowrap px-6 py-4">
+                                <ul>
+                                    {% for contact in activity.operator.contact %}
+                                        <li>{{contact.email}}</li>
+                                    {% endfor %}
+                                </ul>
+                                </td>
+                                <td class="whitespace-nowrap px-6 py-4">{{ activity.plant.plantName }}</td>
+                                <td class="whitespace-nowrap px-6 py-4">{{ activity.plant.site.legalName }}</td>
+                                <td class="whitespace-nowrap px-6 py-4">{{ activity.plant.site.company.legalName }}</td>
+                                <td>
+                                    <a class="whitespace-nowrap px-6 py-4" href="{{ path('app_activity_edit', {'id': activity.id}) }}">edit</a> 
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5">no records found</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <a class="text-blue-500" href="{{ path('app_activity_new') }}">Create new</a>
+{% endblock %}

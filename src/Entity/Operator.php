@@ -34,11 +34,15 @@ class Operator
     #[ORM\OneToMany(mappedBy: 'operator', targetEntity: Contact::class, cascade: ['persist', 'remove'])]
     private Collection $contact;
 
+    #[ORM\OneToMany(mappedBy: 'operator', targetEntity: Activity::class)]
+    private Collection $activity;
+
     public function __construct()
     {
         $this->site = new ArrayCollection();
         $this->plant = new ArrayCollection();
         $this->contact = new ArrayCollection();
+        $this->activity = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -166,6 +170,36 @@ class Operator
             // set the owning side to null (unless already changed)
             if ($contact->getOperator() === $this) {
                 $contact->setOperator(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Activity>
+     */
+    public function getActivity(): Collection
+    {
+        return $this->activity;
+    }
+
+    public function addActivity(Activity $activity): self
+    {
+        if (!$this->activity->contains($activity)) {
+            $this->activity->add($activity);
+            $activity->setOperator($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActivity(Activity $activity): self
+    {
+        if ($this->activity->removeElement($activity)) {
+            // set the owning side to null (unless already changed)
+            if ($activity->getOperator() === $this) {
+                $activity->setOperator(null);
             }
         }
 
